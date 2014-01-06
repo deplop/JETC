@@ -1,0 +1,1556 @@
+\documentclass{article}
+
+%#!platex ieice.answer.tex && dvipdfmx -p a4 ieice.answer
+%# !pdflatex -shell-escape ieice.answer.tex
+%#BIBTEX jbibtex ieice.answer
+%#LPR open ieice.answer.pdf
+
+%\usepackage[pdftex,breaklinks,pdfborder={0 0 0}]{hyperref}
+<<<<<<< HEAD
+\usepackage[breaklinks,pdfborder={0 0 0}]{hyperref}
+=======
+\usepackage[dvipdfm,breaklinks,pdfborder={0 0 0}]{hyperref}
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+\usepackage{booktabs}
+\usepackage{xspace}
+\usepackage{amsmath}	% required for `\equation*' (yatex added)
+
+\renewcommand{\baselinestretch}{1.2}
+\newcommand{\mailaddr}[1]{$<$\href{mailto:#1}{\texttt{#1}}$>$}
+\newcommand{\comment}{\subsection{Comment}\em}
+\newcommand{\subcomment}{\subsubsection{Comment}\em}
+\newcommand{\answer}{\rm \subsubsection*{Answer}}
+\newcommand{\quotepaper}[1]{%
+  \begin{center}
+    \framebox[.95\linewidth]{\begin{minipage}{.9\linewidth} #1 \end{minipage}}
+  \end{center}}
+\newcommand{\ellipsis}{[\thinspace\ldots]\xspace}
+
+\newcommand{\dsetone}{\mbox{\texttt{2008-12-01}}\xspace}
+\newcommand{\dsettwo}{\mbox{\texttt{2008-12-19}}\xspace}
+\newcommand{\dsetsigcomm}{\mbox{\texttt{sigcomm2004}}\xspace}
+
+%%%%%NEWCOMMANDS
+\newcommand{\ket}[1]{\ensuremath{|#1 \rangle}}
+\newcommand{\bra}[1]{\ensuremath{\langle #1|}}
+\newcommand{\braket}[2]{\ensuremath{\langle #1|#2 \rangle}}
+\newcommand{\ketbra}[2]{\ensuremath{|#1 \rangle \langle #2|}}
+\newcommand{\ro}[1]{\ensuremath{|#1 \rangle \langle #1|}}
+\newcommand{\av}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\real}{\ensuremath{\mathrm{Re}}}
+\newcommand{\trace}{\ensuremath{\textsf{Tr}}}
+%%%%%
+
+\title{Summary of Changes Introduced \mbox{According to Reviewers' Comments}}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+\begin{document}
+
+\maketitle
+
+\begin{description}
+<<<<<<< HEAD
+   \item[Journal:] Journal: ACM Journal of Emerging Technologies
+   \item[Manuscript ID:] CACM-12-04-1344 
+   \item[Original paper title:] A Space-Efficient Design for a Reversible Floating Point Adder in Quantum Computing
+   \item[Revised paper title:] A Resource-Efficient Design for a Reversible Floating Point Adder in Quantum Computing
+   \item[Authors:] Trung Duc Nguyen and Rodney Van Meter
+   \item[Corresponding author:] Trung Duc Nguyen \mailaddr{deplop@sfc.wide.ad.jp}
+=======
+   \item[Journal:] Communications of the ACM
+   \item[Manuscript ID:] CACM-12-04-1344
+   \item[Original paper title:] State of the Art in Quantum Computer Architectures
+   \item[Revised paper title:] How to Design a Quantum Computer
+   \item[Authors:] Rodney Van Meter and Clare Horsman
+   \item[Corresponding author:] Rodney Van Meter \mailaddr{rdv@sfc.wide.ad.jp}
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+   \item[Affiliation:] Keio University, Japan.
+\end{description}
+
+
+\bigskip\noindent Dear Editor,
+
+\medskip 
+
+We have addressed all of the reviewers' extensive (and very helpful)
+comments. As suggested, herewith we submit a new version of the paper.
+
+<<<<<<< HEAD
+We are submitting three documents: the article itself, a ``diff'' version of this paper and this document, detailing the changes.  
+=======
+We are submitting two documents: the article itself, and this
+document, detailing the changes.  Ordinarily, we would include a
+``diff'' version marking modifications since the original submission,
+but the extensive reorganization of the paper would limit its
+usefulness.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+Below, please find the detailed list of changes, together with the
+reviewers' comments.  This letter ends with a list of additional
+modifications and a proposed list of additional references beyond
+those currently included in the article.
+
+\medskip\noindent Best regards,
+
+\begin{list}{}{\setlength{\itemsep}{0mm}}
+<<<<<<< HEAD
+\item Trung Duc Nguyen and Rodney Van Meter
+=======
+\item Rodney Van Meter and Clare Horsman
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+\end{list}
+
+\cleardoublepage
+
+<<<<<<< HEAD
+=======
+\section{Overview of Revision}
+
+\subsection{Reorganization of the Article}
+\label{sec:rearch}
+
+Following the suggestion of the Associate Editor, and with specific
+advice from ``friendly'' reviewers from the classical computing
+community (i.e., CACM's regular audience), we have substantially
+reorganized the article.  Figure 2, showing the relationships among
+some sub-fields of study that all must contribute to quantum computer
+architecture, has been slightly revised and is now used as the pivot
+around which the article is organized.
+
+The five ``layers'' in the figure are discussed in four sections.
+Each section presents the issues in general terms, then briefly
+discusses the current state of the art and open research area in an
+integrated fashion, rather than having a standalone ``Open Problems''
+section toward the end of the article.
+
+The order of sections begins at the bottom and ends at the middle,
+where overall system structure comes in.
+
+The ``Applications'' section has been renamed ``Workloads''.  It
+includes programming tools, and remains the shortest section of the
+article.  Prof. Aho requested more in this section, but there is
+simply not room within the space limit.  This area quite readily
+warrants a separate review/tutorial of its own.
+
+Overall, this structure for the paper seems to offer more integrated
+flow, ending with the discussion of the scaling of one architecture to
+give readers an understanding of the macro-level system architecture
+issues.
+
+\subsection{Sidebar}
+
+The sidebar on quantum computation (now attached as an appendix,
+formerly Section 2) has been shortened and revised to focus on
+gate-based computation and adiabatic computation, the only two forms
+of quantum computation discussed in this article.
+
+\subsection{D-Wave}
+\label{sec:d-wave}
+
+The issue of whether, and how, to address D-Wave generates discussion
+with everyone who reads the article, so let us take a moment to
+explain our reasoning.  D-Wave has certainly made few friends in the
+research community, primarily due to their misleading claims to be
+able to solve NP-complete problems and the lack, until recently, of
+peer-reviewed publications demonstrating what their machine actually
+{\em can} do.  Speaking frankly, we are not fans of the company.
+
+Most researchers do not believe that what they have built is a quantum
+computer.  It's not even clear that {\em they} believe that what they
+have built is a quantum computer.  However, what they are doing is
+solving important problems in the {\em engineering} of quantum
+computers at moderate scale: improved magnetic shielding, multiple
+qubit interconnects, on-chip integration of control circuits, and even
+software techniques.  This is more visible in the set of patents they
+hold than in the few peer-reviewed papers they have issued.
+
+As perhaps the only publicly-known organization working at this scale,
+D-Wave is hard to completely ignore.  Moreover, many CACM readers will
+have heard of D-Wave's sale, and leaving it out of the article
+altogether will leave readers with unanswered questions.  Our hope is
+to place their work in context (controversy and all), in as
+even-handed a way as is possible at this juncture.
+
+Reviewer \#1 approves of the discussion of D-Wave in general, though
+he or she asks for some changes, which we have made.  Reviewer \#4
+disapproves, and while we are sympathetic, we disagree for the reasons
+stated here.
+
+\section{Review Co-chair}
+
+Co-Chair, Review Committee: Al Aho\\
+Comments to the Author:\\
+
+\comment
+
+A rewritten version of this paper should be published.  It describes
+in a sobering way the multitude of problems that need to be solved if
+we are going to be able to build practical, scalable quantum computers
+using currently known technologies.  Many researchers working in
+quantum computing are probably not aware of the gamut of daunting
+systems and architectural issues that need to be solved before we can
+have practical, scalable quantum computers.
+
+\answer
+
+Thank you for the positive comments.  Indeed, our experience in
+discussing these issues for nearly a decade is that experimentalists
+have not yet focused on the fact that a large system is more than a
+larger version of a small system.  Conversely, the CS theorists
+working in the area rightfully take great pride and pleasure in
+pursuing the fundamental issue of complexity, and take on the critical
+task of developing the algorithms we must have, but worry less about
+the machines that will ultimately execute these algorithms.  This gap
+is where we, and the architecture community in general, fit in.  We
+believe this bridge is critical to determining whether quantum
+computation is ultimately transformational, or a historical footnote.
+Fortunately, both ends of the spectrum are gradually looking toward
+the middle, and architectural principles will figure prominently in
+the next generation of experimental systems.
+
+\comment
+
+And this paper does not address the critical problem of how such
+quantum computers are going to be programmed.
+
+\answer
+
+Indeed, although we include a paragraph on the importance of
+programming tools, this is a distinct area in its own right, and would
+warrant a separate review.  While we would love to have the
+opportunity to write such an article, others such as Prof. Aho's
+former student Dr. Svore, Prof. Markov, Dr. Maslov, or one of the
+teams in the IARPA program would all be excellent choices as authors.
+
+\comment
+
+Although the title of the paper is ``State of the Art in Quantum
+Computer Architectures'', there are no practical, scalable quantum
+computers in existence today (leaving aside the D-Wave Systems quantum
+computer, about which there is only a lot of speculation as to what
+kind of computer it really is). I fully agree with the reviewer who
+suggested the paper should be retitled.
+
+\answer
+
+Retitled ``How to Design a Quantum Computer''.
+
+\comment
+
+My major concern with the paper is the one raised by the Associate
+Editor -- will the paper in its current form be accessible to the
+average CACM reader? I would strongly encourage the authors to rewrite
+their paper with this question in mind. In its current form, to
+researchers in quantum computing, the paper is an easy-to-read, but
+very superficial, overview of current approaches; to readers with no
+background in quantum information processing, I am afraid it will
+leave most of them completely mystified.
+
+\answer
+
+As described above, we have restructured the paper with the goal of
+improving the flow and making key problems easier to grasp.  After
+restructuring, we solicited ``friendly'' reviews from five classical
+computer systems researchers and incorporated their advice.
+
+\comment
+
+However, there are two reasons why I am encouraging ultimate
+publication of a revised version.  One is that such a paper would
+dispel a lot of uninformed optimism about the immediate future of
+quantum computers. Another, and perhaps more important, is that such a
+paper might stimulate some researchers currently not in quantum
+information processing to come up with new approaches that will
+overcome the daunting problems currently confronting this field.\\
+ --al aho
+
+\answer
+
+Indeed, Prof. Aho has identified our major motivations for writing
+this paper, and we hope the message comes through.  An additional,
+minor goal is to be able to use the open areas outlined in this paper
+to encourage researchers in quantum computation to adjust their focus
+and build collaborations with the systems researchers whose expertise
+is ultimately needed.
+
+\section{Associate Editor}
+
+Associate Editor: Markov, Igor\\
+Comments to the Author:\\
+
+\comment
+We solicited feedback from four experts in quantum computing with very
+different background. Their open comments about this submission and
+comments to the Associate Editor paint a mixed picture. Even the most
+positive reviewers point out serious issues that need to be
+resolved. While it is desirable to have a summary of recent research
+(or even a summary of the state of the art) in quantum architectures,
+the submission suffers several major problems and has numerous low-
+and mid-level deficiencies. In particular, it is not clear if the
+(reasonable) constraints found in reviews can be simultaneously
+satisfied. At minimum, this would require rewriting the paper, which
+is why the authors are advised to resubmit their next revision as
+new. To make sure that the draft is accessible to the general
+audience, consider soliciting feedback from colleagues not involved in
+quantum computing.
+
+\answer
+
+The article has now been thoroughly revised to take into account the
+comments of all of the CACM-solicited reviews, as well as five new
+reviews we solicited from classical systems researchers after
+revision.  All of the mid- and low-level specific issues raised by the
+reviewers have been addressed.  The new structure creates a much more
+logical flow to the paper as a whole, and the incorporation of the
+research areas into each section allows them to be seen more clearly
+in context.  The article now covers the importance of architecture,
+the key advances of recent architectural research, and the open areas
+where both the classical and quantum communities will converge to
+create large-scale systems.  We believe the revised version
+simultaneously satisfies the constraints on length and accessibility
+and the need for comprehensive coverage.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\section{Reviewer: 1}
+
+Comments to the Author
+\comment
+<<<<<<< HEAD
+I'm not an expert in hardware design, so it is a bit difficult for me to judge
+the novelty of this compared to related work. From the perspective of reversible
+computation generally, the problem approached is relevant, and the contribution
+of the work seems worthwhile. The results are not very exciting, but present a
+moderate improvement over an existing design. The paper is well written and
+accessible. It provides good motivation and builds up towards the proposed solution. There is balanced comparison to previous work, and a fair assessment of
+weaknesses of the new design (and of the suitability of floating-point arithmetic
+for quantum realisation in general).
+
+\answer
+
+Thank you for the positive comments.  We believe the substantially reduced resource consumption, the correction of errors in the prior design, and the analysis of suitability for quantum computing are the primary contributions of the paper, and hope you find them important enough for the journal.
+
+\comment
+Where the paper leaves something to be desired is discussion of possible general
+lessons derived from the concrete solution. Are the improvements achieved, and
+the means for achieving them, a one-off thing, or can the ideas be reused in
+a principled way for related problems? Is there potential for transfer of these
+implementation ideas, to reap similar benefits for other units than the specific
+case of floating-point addition? The paper would be more convincing if some
+such considerations could be added.
+
+\answer
+
+There are some proposed units can be used in general not only in specific case of floating-point adder. For example, conditional swap unit and two's complement to sign-magnitude converter. In our proposed design, the conditional swap unit
+even got an improvement of the number of garbage output to 0. And in the two's
+complement to sign-magnitude converter we archive a truly reversible circuit
+which can execute with both sign-magnitude and two's complement input while
+the existing design just leave garbage output and cannot run reversely.
+
+\comment
+
+page 2, line 34: Do you really mean ``adapt'', or ``adopt''?
+
+\answer
+
+Changed to ``adapt''.
+
+\comment
+
+p 3, l 19: This line should not be indented.
+=======
+
+``State of the Art in Quantum Computer Architectures'' by Rodney Van
+Meter and Clare Horsman presents a general overview of current
+thinking about how a quantum computer will be architected.  This
+review is generally well written, attempting to solve the difficult
+problem of giving an overview of the complex and diverse field of
+quantum computing, while also discussing the main sub-area quantum
+architectures.  The parts of the review that shine are those which
+focus on big picture architectural understandings (just pointing out,
+for example, that a quantum computer will have huge error correcting
+overhead is probably important for an article in CACM).  I think the
+paper should be published in CACM, subject to address the few major
+points below (I've also added minor points of contention that I hope
+the authors will consider.)
+
+\answer
+
+Thank you for the positive comments.
+
+\comment
+
+1) The section on quantum computation should be put in sidebar or
+considerably shortened.  This section basically ruins the flow of the
+article where it currently is.  Many computer scientists have a basic
+understanding now of what a quantum computer is, and further the
+sections that follow don't depend heavily on this section.
+
+\answer
+
+The section has been substantially shortened to focus on the
+gate-based and adiabatic models that appear in the main text.  Our
+intention is for it to be a sidebar to the main article, where it
+won't interrupt the flow of the text.  It now appears as an appendix
+to this submission.
+
+\comment
+
+2) The section on quantum error correction needs to call out more
+explicitly that we can define measures like the rate of the quantum
+codes, but that this rate isn't necessarily the most important
+property of these codes, and that other features of the architecture
+will dictate which codes are used.  The authors are reaching towards
+this in this section, but this needs to be stated more clearly.
+
+\answer
+
+This is a good observation.  We added a paragraph in the middle of the
+section discussing rate and introducing how a code is selected.
+
+\comment
+
+3) The take home message for the section on quantum experimental
+progress is actually the second to last one, in which one discusses
+the actual sizes of the devices.  This will come as a surprise to most
+readers. Reworking this in such a way that this is more prominent
+(making it a table referenced early on), would significantly improve
+this section.
+
+\answer
+
+The table in the paper has been revised, in part with this goal in
+mind.
+
+\comment
+
+
+Smaller points of contention / nits.
+
+pg. 2:\\
+Fig 1: ``This figure demonstrates the complexity of making pronouncements about the speed of quantum computers''
+I'm not sure the figure demonstrates complexity.  But it does demonstrate the difficulty of making such pronouncements.
+
+\answer
+
+Agreed, and corrected.
+
+\comment
+
+Fig 1: It might be nice to augment this chart with current widely used standard number of bits used in RSA.
+
+\answer
+
+Excellent suggestion.  Done.  Note that this is NIST's 2007
+recommendation; RSA appears not to have a single recommendation of
+their own at the moment.
+
+\comment
+
+pg. 4 \\
+Table 1: ``Josephson junction loop'' $\Rightarrow$ probably better to say ``Superconducting circuit''
+
+\answer
+
+The table has been revised.
+
+\comment
+
+pg. 5\\
+This is a great sentence: ``Thus, the principles of classical computer
+architecture can be applied, but the answers arrived at will likely
+differ substantially from classical architectures.'' and should not be
+cut for editing in the article.
+
+\answer
+
+Thank you for the positive comment.
+
+\comment
+
+``Quantum computers do this by making use of the fundamentally quantum
+properties of their constituent materials to store and manipulate
+data. These are the properties of superposition and entanglement.''
+
+I would restate this in a slightly more restrained manner: while there
+are cases that show that small entanglement (defined for example by
+schmidt rank of a pure state) implies that the system can be simulated
+efficiently clasically, for other more interesting entanglement
+measures, this is not always true (in addition the case of mixed state
+entanglement is far less settled.)  Somethign like ``Among the novel
+quantum properties thought to be important are superposition and
+entanglement.)''
+
+\answer
+
+Agreed; the difficulty is conveying this concisely in a lay article.
+The sidebar has been substantially revised to focus on gate-based and
+adiabatic computation.  The particular point raised by the reviewer
+has been addressed.
+
+
+\comment
+
+``When superposition spreads across more than a single quantum system
+and not all elements in the superposition are equally likely, the
+qubits can be entangled with each other.''  This feels slightly
+misleading because it almost sounds like the only case of ``not''
+entanglement is the case of superposition of all equally likely.
+Consider rewording.
+
+\answer
+
+Reworded.  Before:
+
+\quotepaper{
+When superposition spreads across more than a single quantum system
+and not all elements in the superposition are equally likely, the
+qubits can be entangled with each other.
+}
+
+After:
+
+\quotepaper{
+Not all of the elements in the superposition are required to be
+equally likely.  In some such cases, when the superposition contains
+more than a single qubit, the qubits can be \emph{entangled} with each
+other.
+}
+
+\comment
+
+pg. 6\\
+``The degree to which adiabatic computation is universal is still under
+debate.''  Adiabatic quantum computation is certainly universal.  The
+open question is whether it is universal under realistic noise
+settings.  Maybe choose a slightly different way of expressing this.
+
+\answer
+
+This has been removed as part of the revision of the sidebar.
+
+\comment
+
+pg. 7:\\
+``quantum states cannot be duplicated'' should probably be ``unknown quantum states cannot be duplicated''.
+
+\answer
+
+Fixed.
+
+\comment
+
+pg. 7\\
+``Probably the most promising approach in error correction is surface
+code computation''\\
+This seems highly suspect.  First even in quantum architecture I don't
+think this is settled dogma.  Second this is definitely not true for
+``error correction'' in general: these codes are generally horrible when
+it comes to standard measures of quantum error correction.  It is only
+when one adds in the constraint of locality that these codes become
+interesting.  Finally studies (like those of Svore and the IBM group)
+that show other codes performing better in a localized setting.  The
+case for surface codes seems to be very much of wide debate.
+
+\answer
+
+Rewritten to be more even-handed.
+
+\comment
+
+pg. 8\\
+The second on D-wave needs a big disclaimer stating that their machine
+is not known to be universal and performs a specialized class of
+quantum algorithms.  I think highlighting their significant
+engineering results is very important, and am glad the author does
+this, but one still needs to be careful to point out to non-expert
+audiences that whether their machine is a full throttled quantum
+computer is not known.
+
+\answer
+
+We think the reviewer meant ``the section''.  D-Wave is not mentioned
+on p. 8.  The last sentence of the paragraph on D-Wave (formerly on
+p. 9, now on p. 4) has been rewritten.  Before:
+
+\quotepaper{
+However, they
+have yet to definitively demonstrate large-scale entanglement in their
+system, or to show that it can actually outperform classical computers
+for interesting problems.
+}
+
+After:
+
+\quotepaper{
+However, the
+company has not yet released data that demonstrates coherent quantum
+control and entanglement of large numbers of these qubits; as the
+device is also not intended to be capable of universal computation, it
+is a matter of ongoing debate whether the effects seen are actually
+viable as ``quantum computing''.
+}
+
+\comment
+
+``and suppress noise''\\
+I'm not sure the microwave cavities really suppress noise.
+
+\answer
+
+Deleted in the interest of space.
+
+\comment
+
+pg. 12\\
+``(1) a two-level qubit;''\\
+This might read many educated CS readers to believe that only
+two-level systems have been considered for quantum computers.  Maybe
+reword?
+
+\answer
+
+Since DiVincenzo's original criteria specified qubits, we are
+reluctant to change this directly, so we have added a footnote.  Note
+that this paragraph now starts Section 2 (new numbering).
+
+\section{Reviewer: 2}
+
+Comments to the Author
+
+\comment
+
+Overall, I find this to be a good survey that covers a lot of relevant
+recent work in work relating to quantum computer architecture.
+My primary concern is that of accessibility to the non-quantum audience.
+The sidebar is useful, but I'm concerned that the intro is not well-motivated
+without more explanation of quantum computing.  
+
+\answer
+
+The rewritten article has been commented on by several classical
+researchers, and the accessibility improved.
+
+The sidebar, rather than being a six-paragraph introduction to all of
+quantum computing, now focuses on the two approaches of gate-based
+computation and adiabatic computation that appear in the article.
+
+\comment
+
+The discussion of technologies, algorithms and error correction are very
+dense, covering many groups.  Perhaps length constraints are a problem
+here, but my sense is that more explanation is needed.
+
+\answer
+
+Yes, unfortunately, length is a severe constraint here.  We have
+trimmed the number of technologies mentioned directly, in order to
+slightly expand the discussion of each.  We hope that motivated readers
+will find enough in this review to help them navigate both the more
+technical literature and the broad landscape of research groups.
+
+\comment
+
+p9 line 42, multiple groups discussed but only one citation to Chuang's work.
+Would be useful to add more citations here
+
+\answer
+
+While we agree, unfortunately, we are already above the recommended
+limit of forty references for a CACM review.  Below we propose
+thirteen additional references we would like to incorporate into the
+article or supplementary online material.
+
+\comment
+
+Shouldn't iARPA be IARPA?  Should there be a citation or link
+for the IARPA QCS program?
+
+\answer
+
+IARPA spelling corrected.  Link added as a footnote.
+
+\section{Reviewer: 3}
+
+Comments to the Author
+
+\comment
+
+Overall, the paper is very clear, and definitely reads as a brief,
+introductory overview.
+
+\answer
+
+Thank you.
+
+\comment
+
+Technical content is not substantial.
+
+\answer
+
+The purpose of the article is not to present new technical
+discoveries, which we believe is what the reviewer refers to here.
+This article does present a broad overview of the key technical issues
+in scaling up quantum computers, organized in a fashion that we have
+not seen before in the literature.  It serves a primary pedagogical
+purpose, and secondarily to enumerate areas in which active research
+is desirable.
+
+\comment
+
+First, I recommend changing the title.  The current title (and
+abstract) do not properly match the article contents.  I recommend a
+title on Review of Progress towards a Quantum Architecture, or
+something similar. It's really not talking about the state-of-the-art,
+but rather overviewing the many subfields involved in quantum
+architecture.
+
+\answer
+
+We have opted for the catchier ``How to Design a Quantum Computer''.
+
+\comment
+
+The references are also very limited.  When mentioning algorithms, or
+groups, it would be better to also include the reference, instead of
+just the group name.  Similarly, when discussing algorithms that show
+potential gains over classical approaches, please include the
+references to those algorithms and original papers, not just the
+review articles.
+
+\answer
+
+While we agree, unfortunately, we are already above the recommended
+limit of forty references for a CACM review.  Below we propose
+thirteen additional references we would like to incorporate into the
+article or supplementary online material.
+
+\comment
+
+More specific comments follow:
+
+p. 1 line 38/39: ``The basic differences'' $\rightarrow$ ``The basic difference between quantum and classical omputers are...''
+
+\answer
+
+The table and this accompanying paragraph have been rewritten.
+
+\comment
+
+p. 1 line 47: ``Fig. 1 demonstrates'' $\rightarrow$ ``Fig. 1 illustrates''  The figure doesn't demonstrate something, it just reviews and illustrates other results.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\answer
+
+Done.
+
+\comment
+
+<<<<<<< HEAD
+p 4, l 42: ``And example'' $\rightarrow$ ``An example''
+=======
+Why use first names (like Peter Shor) and not just last names?  Same comment applies throughout.
+
+\answer
+
+Corrected.
+
+\comment
+
+p. 2, line 45: ``demonstrates'' $\rightarrow$ illustrates\\
+``of making'' $\rightarrow$ ``behind''
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\answer
+
+Done.
+
+\comment
+
+<<<<<<< HEAD
+p 4, l 49/50: ``num bers'' $\rightarrow$ ``numbers'' or ``num-bers''
+
+\answer
+
+Done
+
+\comment
+
+p 7, l 52: ``a n-bit'' $\rightarrow$ ``an n-bit'' (pronunciation of ``n-bit'' starts with a vowel if read out, so the indefinite article needs to be ``an'')
+=======
+p. 4, table coulmn 3: Capitalize all first words in the quantum column.
+
+\answer
+
+Done.
+
+\comment
+
+p. 4, line 36/37: ``to a complete, useful machine''.  I would recommend rewording this.  A complete, useful machine is very generic.  It's to a scalable, real-world machine...
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\answer
+
+Done.
+
+\comment
+
+<<<<<<< HEAD
+p 11, l 35: ``..., and the evaluation apparently contains several errors.'' Say,
+right away, that you will discuss these miscountings later in this section.
+
+\answer
+
+Rewritten. New text:
+
+\quotepaper{
+This section describes in detail the resource miscountings and the differences between our proposed design and the NTR design.
+}
+
+\comment
+p 12, l 29: ``compare to'' $\rightarrow$ ``compared to''
+=======
+p. 4, line 47: ``engineering-driven''.  It's more that it becomes programmable and engineering-driven.
+
+\answer
+
+Deleted in the process of revising the text.
+
+\comment
+
+p. 5, line 10: ``inside of a'' $\rightarrow$ ``inside a''
+
+\answer
+
+Done.
+
+\comment
+
+p. 5, line 23: Add some references to the algorithms themselves, not just the surveys.
+
+\answer
+
+While we agree, unfortunately, we are already above the recommended
+limit of forty references for a CACM review.  Below we propose
+thirteen additional references we would like to incorporate into the
+article or supplementary online material.
+
+\comment
+
+p. 5, line 27: ``e.g.'' $\rightarrow$ ``e.g.,''
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\answer
+
+Done.
+
+<<<<<<< HEAD
+
+\comment
+
+p 15, l 47: ``in term of'' $\rightarrow$ ``in terms of''
+=======
+\comment
+
+p. 5, line 48/49: ``only n bits of data...'': I recommend phrasing this a little differently, or adding that it's always a probabilistic machine.
+
+\answer
+
+Deleted during revision.
+
+\comment
+
+p.6, line 8 - 10: ``to all the'' $\rightarrow$ ``to all of the''\\
+``to get the correct'' $\rightarrow$ ``to get the desired''
+
+\answer
+
+The sidebar has been rewritten.
+
+\comment
+
+p. 6, line 28/29: add ref. to d-wave paper\\
+
+\answer
+
+References to two D-Wave papers are included in the main body of the
+article.
+
+\comment
+
+no space before ``-based'' (same error on line 37)
+
+\answer
+
+Fixed.
+
+\comment
+
+p. 7, line 11: ``weights''.  What is meant by weights here?
+
+\answer
+
+Deleted during revision of the QEC section.
+
+\comment
+
+p. 7, line 31: ``will be taken up''.  Reword.  Awkward english.
+
+\answer
+
+Fixed: ``will be taken up correcting errors'' $\rightarrow$ ``will be
+used to correct errors''.
+
+\comment
+
+p. 7, line 45: ``highly abstract work''.  I'd remove this.  It makes it
+seem hard to grasp, when it's actually had remarkable experimental and
+theoretical impact.  Also need to add ref. to the early topological
+papers.
+
+\answer
+
+Removed.  Due to tight restrictions on reference count, references to
+earlier work (which is foundational but is not expected to be used
+directly in implementations) are not included here.
+
+\comment
+
+p. 7 line 49: ``worked tirelessly''.  Again, this is awkward.  I
+recommend rewording.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\answer
+
+Done.
+
+<<<<<<< HEAD
+
+\comment
+
+p 15, l 54: ``can evaluation of'' $\rightarrow$ ``can evaluate'', and ``in term of'' $\rightarrow$ ``in terms of''
+=======
+\comment
+
+p. 7, line 53: ``Surface codes, of course, are not...'' (there are more
+than one, so make plural)
+
+\answer
+
+Deleted during revision.
+
+\comment
+
+p. 8, line 12: change to ``such as the Bacon-Shor code''
+
+\answer
+
+Deleted during revision.
+
+\comment
+
+p. 8, line 49.  Write out Table instead of Tab.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\answer
+
+Done.
+
+<<<<<<< HEAD
+\section{Reviewer: 2}
+=======
+\comment
+
+p. 9, line 21: ``leading group''.  You don't say this about any other group, so why have it here?  I'd remove it.
+
+\answer
+
+Done.
+
+\comment
+
+p. 9, line 31: remove ``in journal papers''.  If it's reported, that's assumed to be at a conference or journal.
+
+\answer
+
+Done.
+
+\comment
+
+Harvard architecture?  Please define.
+
+\answer
+
+A Harvard architecture is a machine with separate memories for the
+program and data, as implied in the first half of the sentence.  We
+believe that the term ``Harvard architecture'' will be commonly
+understood by readers of CACM.
+
+\comment
+
+p. 14, line 32: ``e.g.'' $\rightarrow$ ``e.g.,''
+
+\answer
+
+Done.
+
+\section{Reviewer: 4}
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+Comments to the Author
+
+\comment
+
+<<<<<<< HEAD
+The title of the paper does not truthfully reflect the content: The results are
+evaluated using no metric that takes the space of the physical implementation
+into account at all. 
+
+\answer
+
+The ``Space'' in our title was intended to refer to number of logical qubit memories, but we now recognize that it might mislead readers into thinking we are addressing physical layout.
+
+Moreover, our paper saves some 70\% of the required memory capacity, but it also reduces the number of gates that must be applied by a similar amount, and we don't want to under-emphasize that contribution.
+
+After consideration, we suggest, ``A Resource-Efficient Design\ldots '' as a revised title.
+
+\comment
+In the introduction the authors claim that a reversible computer necessarily has
+no energy dissipation. This is false. A computer with no energy dissipation is
+necessarily reversible but not the other way round.
+
+\answer
+
+Rewritten. New text:
+
+\quotepaper{
+In irreversible systems, Landauer showed that erasure of a single bit
+generates $kT\ln2$ joules of heat energy where $k$ is Boltzmann's constant of $1.38\times10^{-23}m^{2}s^{-2}kgK^{-1}$ and $T$ is the absolute temperature of the
+environment. If no information is erased, computation requires no release
+of heat. This has led to considerable interest in the study of reversible
+computing.
+}
+\comment
+
+The authors should state more clearly that by ``reducing the garbage'' they refer
+to decreasing the amount of auxiliary variables that remain in a dirty state.
+In equation (1), $4\times32+|G|$ variables are used whereas the original approach
+uses $3\times32+|G|$ variables. As no size for either of the $G$s (presumably they
+are different) is given it is impossible to judge whether the new approach uses
+less variables, which is a crucial point as variables are expensive to realize.
+
+\answer
+
+Here, we believe the reviewer has misread the paper. There is no reason to believe that the $G$ in Eq. 1 is different from the $G$ in the text just above, and in either case the point of Eq. 1 is that $G$ can be erased.
+
+The formulation just above uses three 32-bit registers and a fourth whose size is unspecified but described as ``large''. (In fact, it is hundreds of bits, as detailed later in the paper, but it is too early to introduce this here.) All four of those registers are in permanent use, with dirty (and, in the case of quantum variables, possibly entangled) data.
+
+The formulation in Eq. 1, uses those same four registers plus a fifth (unspecified but fairly obviously 32 bits) \emph{temporary} register.  Both the large $G$ register and the fifth register are \emph{cleaned} by the process of Eq. 1, resulting in far less garbage after completion.
+
+We believe that the explanation as it stands is as clear as possible at this point in the paper, and would like to leave it as-is.
+
+\comment
+
+I do not understand why the number of steps containing $T$ gates is used as a
+metric. This would lead to different costs for the following two circuits\\
+ -T-H-\\ 
+ -H-T-\\
+and \\ 
+ -T-H-\\ 
+ -T-H- \\
+Intuitively the costs of these circuits should be identical. Unfortunately the authors do not justify this way of counting or give a reference for this metric.
+
+\answer
+
+The $T$ and $T^\dag$ gates are the most expensive elements in a fault-tolerant implementation of the Clifford+$T$ set. Therefore, it has become common practice to ignore the cost of $H$ and $CNOT$ gates, and count only the $T$ and $T^\dag$ gates when assessing circuit depth and total execution cost.
+There is a paper of Selinger~\cite{PhysRevA.87.042302} which explain how to design a Toffoli gate with least of $T$-depth. The paper actually archive a Toffoli circuit with $T$-depth one.
+
+
+
+\comment
+In figure 4 the bitwidth for the alignment operation is stated to be 64. But
+counting the rectangles with 0/1 in it as 1 bit and the long blocks with the
+amount stated above I count 67 bits.
+
+\answer
+
+We are sorry for drawing an ambiguous figure that make the misunderstanding
+for the reviewer. The bitwidth for the alignment operation is exactly 64 bits,
+includes 40 additional 0-bits and 23 bits from \emph{Conditional Swap} unit plus a bit
+of 1 at the first place.
+The figure is redrawn to avoid this misunderstanding.
+
+\comment
+The background section should give a more detailed introduction/explanation of
+the $KQ$ metric.
+
+\answer
+Newly written text:
+
+\quotepaper{
+Roughly speaking, $KQ$ is the time-space product of the circuit.  Assuming the error probability of each qubit is independent and the same for one time step, we need to engineer the error correction system to give a post-correction error probability of $e \ll 1/KQ$ to ensure successful operation of our circuit with high probability.
+}
+
+
+
+
+\comment
+
+I do not understand the last sentence of the paper. The authors want to restrict the range of the input values in order to improve the reversibility. If
+one restricts the input then it wouldn't be conform to IEEE-754 anymore. Furthermore, reversibility is nothing that can be ``improved''. A function/circuit is either reversible or irreversible. There is nothing in between.
+
+\answer
+
+Deleted.
+
+
+\comment
+
+The authors do not cite properly. In section 2 Steane's KQ metric is mentioned with no reference (later in the paper they do cite the corresponding work
+correctly), the statement that ``quantum computers are susceptible to making errors'' has no reference at all and for the IEEE-754 format wikipedia is cited
+instead of the official standard.
+
+\answer
+We have added the citation of corresponding work for Steane's KQ metric at
+the first place it mentioned and replaced the reference of the IEEE-754 format
+wikipedia by the official standard from IEEE~\cite{P754:2008:ISF}.
+We also added reference for ``quantum computers are susceptible to making
+errors''~\cite{Preskill97reliablequantum}.
+
+\comment
+When printed, the figures 10, 12a), 14 , and 4 loose the whitespaces between the
+characters and are difficult to read.
+
+
+\answer
+
+We have printed out the paper and check the mistakes but the figures seem
+not to have the mentioned problem. But we realize that the improper size of
+these figures might cause the problem for some readers, thus we adjust the sizes
+slightly bigger.
+
+\comment
+
+The authors reference related work in the abstract. I consider this as bad style.
+
+\answer
+
+The reference for related work in the abstract has been removed.
+=======
+This paper focuses on the study of quantum computing
+architectures. One of the more important sections, Section 4, does
+not, in my opinion, do a very good job of\\
+(1) describing the different approaches to quantum information
+processing, and, more importantly,\\
+(2) their implications on the architectures.
+
+Not only the four criteria that the section opens up with do not
+suffice (e.g., what if the system cannot be initialized to a simple
+state?---and I suggest discussing DiVincenzo, as well as extended
+DiVincenzo criteria here), but the implications those technologies
+listed have on the architectures aren't even described.  There does
+not appear to be any systematic approach to describing the existing
+QIP approaches, and AQC is mixed in the midst of circuit type
+approaches.
+
+\answer
+
+After reorganization, this is now Sec. 2 of the paper.  The DiVincenzo
+criteria and extended DiVincenzo criteria are discussed in the first
+two paragraphs of the section, solving the ``missing fifth criterion''
+problem.  Following this, several technologies are introduced in order
+of the size of systems built to date.  The impact of the DiVincenzo
+criteria on architecture itself appears throughout the text, including
+in discussions such as placement of measurement devices here in this
+section, at the bottom of the paragraph labeled {\bf heterogeneity}.
+
+\comment
+
+Section 6 uses a number of technical terms without proper definition.
+
+\answer
+
+This section has been deleted and the contents distributed to the
+various relevant sections, making it easier to manage new vocabulary
+in context.
+
+\comment
+
+Section title announces a list of ``open problems'', however, it
+contains a list of research areas.  
+
+\answer
+
+Agreed; the reviewer is correct that the intent is more to illustrate
+research areas rather than enumerate a set of constrained, specific
+problems.  The contents have been distributed to relevant sections.
+
+\comment
+
+More importantly, I see no connection or natural order in the list of
+the areas presented.  It would be helpful to see an overarching
+picture, as well as a more structured approach to describing the
+individual research areas; possibly, including a more in-depth
+description of the areas, too.
+
+\answer
+
+In the originally submitted version, we were trying to create an
+implicit flow of first knowing what you are attempting to build
+(workloads) and the technologies available, before ending at the
+high-level architectural considerations.  However, we now agree with
+the reviewer that the article structure was unclear.  More logical
+flow is desirable in the paper as a whole, and we have substantially
+reorganized it around the layers in Fig. 2 as described in
+Sec.~\ref{sec:rearch} of this letter.
+
+\comment
+
+I would, ultimately, like to see some discussions about feasibility of
+the different kinds of architectures, as a result of lessons we
+learned from QIP, as lessons carried out for the future.  Maybe a
+whole separate section?
+
+\answer
+
+For a long list of reasons, none of the large-scale architectures
+proposed to date are truly feasible.  The principal lessons learned so
+far are included in the rewritten Conclusions, and can be summarized
+as:
+
+\begin{itemize}
+\item systems capable of solving classically intractable problems will
+  be {\em large};
+\item device size will limit integration levels, affecting
+  architecture; and
+\item logical clock speed affects what can and cannot be effectively
+  computed (as shown in Figure 2 in the paper).
+\end{itemize}
+
+Beyond this, it is difficult to make specific pronouncements, but each
+new proposal takes us a step closer to a realizable system.
+
+\comment
+
+Currently, the paper feels very thin in content.  I would, however, be
+interested in seeing a well thought through, well structured, and well
+laid out survey about quantum architectures from these authors.
+
+\answer
+
+Key sections of the article have been restructured, as described
+above.  We also look forward to the opportunity to write a
+substantially longer, more detailed survey or tutorial for a different
+venue.
+
+\comment
+
+Other comments:\\
+Given the controversy regarding D-Wave claims about a quantum
+processor/computer, my suggestion is to stay away from mentioning this
+company until they prove their device goes beyond what may be achieved
+classically.
+
+\answer
+
+With apologies to the reviewer, we believe that, despite the
+controversy, inclusion of D-Wave is important at this stage.  See our
+discussion of our reasons for including D-Wave in
+Sec.~\ref{sec:d-wave} of this letter.
+
+\comment
+
+The reason behind the choice and order of stacks in Figure 2 evades my
+understanding. Perhaps it would help if authors explain what is the
+meaning of the vertical axis?
+
+\answer
+
+The revised figure includes a legend identifying the layers on the
+right side.  The layers move from concrete physical items at the
+bottom, through system organization to the abstract reasoning of pure
+theory at the top, a structure we feel will be intuitively accessible
+to readers.  Note that these layers are not intended to correspond to
+or compete with the layers of specific architectural functionality
+proposed in the QuDOS paper (Ref.~[18] in the revised article).
+Instead, they can be viewed as divisions of human work; a startup
+company building a quantum computer would organize the
+responsibilities of individuals or teams much along these lines.
+
+\comment
+
+I would order numbers in the long lists of citations in an increasing
+order, which seems to be a commonly accepted convention.
+
+\answer
+
+Done.
+
+\comment
+
+I suggest rewriting ``When superposition spreads across more than a
+single quantum system and not all elements in the superposition are
+equally likely, the qubits can be entangled with each other.'' as ``When
+superposition spreads across more than a single basis
+(Boolean/register) state, the qubits may be entangled with each
+other.''
+
+\answer
+
+Reworded.  Before:
+
+\quotepaper{
+When superposition spreads across more than a single quantum system
+and not all elements in the superposition are equally likely, the
+qubits can be entangled with each other.
+}
+
+After:
+
+\quotepaper{
+For example, a
+3-qubit register can be in the superposed state of all eight values
+000 to 111, all with different weights. In some such cases, when the
+superposition contains more than a single qubit, the qubits can be
+\emph{entangled} with each other. The individual qubits no longer act
+independently, and exhibit much more strongly correlated behaviour
+than is possible for classical systems.
+}
+
+\comment
+
+``Circuit-based quantum computing starts from an equal superposition of
+register states'' I am not sure if I agree with that. I believe
+circuit-based quantum computing can start with any simple fiducial
+state, most often being \ket{0}.
+
+\answer
+
+Many quantum algorithms begin by building the superposition of all
+states for a substantial part of the register,
+$\ket{0}\rightarrow\sum_{k=0}^{2^n-1}\ket{k}$ (ignoring
+normalization), before delving into the heart of the algorithm.  The
+details of this process are beyond the scope of this article, but we
+have adjusted the text to be more accurate.
+
+Before:
+
+\quotepaper{
+Circuit-based quantum computing starts from an equal superposition of
+register states and uses gate operations between qubits to change the
+weights in the superposition (usually creating entanglement in the
+process).
+}
+
+After:
+
+\quotepaper{
+In general, the first step of a
+circuit-based computation is to create an equal superposition of all
+register states.  Gate operations between qubits then change the
+weights in the superposition, usually creating entanglement in the
+process.
+}
+
+\comment
+
+I am not sure I agree with the correctness of the description of
+AQC. As far as I can tell, AQC algorithm requires a quantum system to
+reside in a ground state, whereas a slow enough manufactured evolution
+is designed such that by the end of it the ground state is bound to
+possess certain desired properties. Furthermore, AQC has been proved
+to be equivalent to the circuit computational model with at most
+polynomial overhead, http://arxiv.org/abs/quant-ph/0609067
+
+\answer
+
+Rewritten.  New text:
+
+\quotepaper{
+The system built by D-Wave is based on a different model of
+computation, known as {\em adiabatic quantum computation}. As with the
+circuit model, the output state is measured to give the final
+answer. In this case, however, the state is designed to be the
+low-energy ground state of a quantum system in the quantum
+computer. The key to the computation is to adjust the coupling between
+quantum systems in the device to allow it to relax into that specific
+ground state. The degree to which the D-Wave system achieves this, and
+the specific abilities and limitations of the D-Wave system, are
+topics of active discussion among the community.
+}
+
+\comment
+
+``strict restriction'' is asking to be rewritten.
+
+\answer
+
+Adjective stricken.
+
+\comment
+
+Section 5, in my opinion, mixes algorithm theory and algorithm design,
+unable to clearly distinguish between the two.
+
+\answer
+
+In this article, the focus is on how users will evaluate the utility
+of quantum computers, and how programmers will create the necessary
+applications, rather than the theory behind why quantum algorithms
+work.  The section on workloads has been revised and retitled to
+reflect this implicit emphasis.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+
+\section{Additional Modifications}
+
+<<<<<<< HEAD
+In addition to the requests from the reviewers and editor, the following modifications have been made:
+
+\begin{itemize}
+\item Figure 4 has been redrawn.
+
+=======
+In addition to the requests from the reviewers and editor, the
+following modifications have been made:
+
+\begin{itemize}
+\item A $10\times$ error in the performance of NFS plotted in Fig. 1
+  was discovered and corrected.
+\item $n$ replaced with $L$ in Section 5, to be consistent with
+  Fig. 1.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+\end{itemize}
+
+\section{Additional Proposed References}
+
+<<<<<<< HEAD
+The following references has been added to the paper as reviewers asked
+=======
+The reviewers asked for additional references for work by experimental
+groups, the IARPA algorithms, error correction, and adiabatic
+computation.  While we have chosen not to write an extensive addendum
+to the paper itself to appear as supplementary online material (SOM),
+we propose that the references appear either in the article itself or
+as a simple list as SOM.  These thirteen additional references would
+bring the total reference count of the article to 56, and would
+satisfy the reviewers' requests and provide readers with a more
+thorough but still accessible reading list.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\begin{thebibliography}{10}
+
+\bibitem{ambainis2007any}
+A.~Ambainis, A.~Childs, and B.~Reichardt.
+\newblock Any and-or formula of size $n$ can be evaluated in time $n^{1/2+ o
+  (1)}$ on a quantum computer.
+\newblock In {\em Foundations of Computer Science, 2007. FOCS'07. 48th Annual
+  IEEE Symposium on}, pages 363--372. IEEE, 2007.
+
+<<<<<<< HEAD
+
+\bibitem{PhysRevA.87.042302}
+{Peter Selinger}. 2013.
+\newblock Quantum circuits of T-depth one.
+\newblock {\em Phys. Rev. A\/}  {87} (Apr 2013), 042302.
+\newblock
+Issue 4.
+
+\url{http://dx.doi.org/10.1103/PhysRevA.87.042302}
+
+\bibitem{Preskill97reliablequantum}
+{John Preskill}. 1997b.
+\newblock Reliable Quantum Computers.
+\newblock   (1997).
+\newblock
+
+
+\bibitem{P754:2008:ISF}
+{{IEEE Task P754}}. 2008.
+\newblock {\em {IEEE 754-2008, Standard for Floating-Point Arithmetic}}.
+\newblock 58 pages.
+\newblock
+ (electronic)
+
+\url{http://dx.doi.org/10.1109/IEEESTD.2008.4610935}
+=======
+\bibitem{chiaverini05:qft-impl}
+J.~Chiaverini, J.~Britton, D.~Leibfried, E.~Knill, M.~D. Barrett, R.~B.
+  Blakestad, W.~M. Itano, J.~D. Jost, C.~Langer, R.~Ozeri, T.~Schaetz, and
+  D.~J. Wineland.
+\newblock Implementation of the semiclassical quantum {Fourier} transform in a
+  scalable system.
+\newblock {\em Science}, 308:997--1000, 2005.
+
+\bibitem{childs2003eas}
+A.~Childs, R.~Cleve, E.~Deotto, E.~Farhi, S.~Gutmann, and D.~Spielman.
+\newblock {Exponential algorithmic speedup by a quantum walk}.
+\newblock In {\em Proceedings of the thirty-fifth annual ACM symposium on
+  Theory of computing}, pages 59--68. ACM New York, NY, USA, 2003.
+
+\bibitem{dennis:topo-memory}
+E.~Dennis, A.~Kitaev, A.~Landahl, and J.~Preskill.
+\newblock Topological quantum memory.
+\newblock {\em J. Math. Phys.}, 43:4452--4505, 2002.
+
+\bibitem{hallgren2007ptq}
+S.~Hallgren.
+\newblock {Polynomial-time quantum algorithms for Pell's equation and the
+  principal ideal problem}.
+\newblock {\em Journal of the ACM (JACM)}, 54(1), 2007.
+
+\bibitem{harrow:lineqs}
+A.~W. Harrow, A.~Hassidim, and S.~Lloyd.
+\newblock Quantum algorithm for linear systems of equations.
+\newblock {\em Phys. Rev. Lett.}, 103(15):150502, Oct 2009.
+
+\bibitem{hensinger06:_t-junction}
+W.~K. Hensinger, S.~Olmschenk, D.~Stick, D.~Hucul, M.~Yeo, M.~Acton,
+  L.~Deslauriers, and C.~Monroe.
+\newblock {T}-junction ion trap array for two-dimensional ion shuttling,
+  storage, and manipulation.
+\newblock {\em Applied Physics Letters}, 88:034101, 2006.
+
+\bibitem{magniez2005quantum}
+F.~Magniez, M.~Santha, and M.~Szegedy.
+\newblock Quantum algorithms for the triangle problem.
+\newblock In {\em Proceedings of the sixteenth annual ACM-SIAM symposium on
+  Discrete algorithms}, pages 1109--1117. Society for Industrial and Applied
+  Mathematics, 2005.
+
+\bibitem{PhysRevLett.99.070502}
+A.~Mizel, D.~A. Lidar, and M.~Mitchell.
+\newblock Simple proof of equivalence between adiabatic quantum computation and
+  the circuit model.
+\newblock {\em Phys. Rev. Lett.}, 99:070502, Aug 2007.
+
+\bibitem{regev2002quantum}
+O.~Regev.
+\newblock Quantum computation and lattice problems.
+\newblock In {\em Foundations of Computer Science, 2002. Proceedings. The 43rd
+  Annual IEEE Symposium on}, pages 520--529. IEEE, 2002.
+
+\bibitem{svore05:_local-ft}
+K.~M. Svore, B.~M. Terhal, and D.~P. DiVincenzo.
+\newblock Local fault-tolerant quantum computation.
+\newblock {\em Physical Review A}, 72:022317, 2005.
+
+\bibitem{takakura2010triple}
+T.~Takakura, M.~Pioro-Ladri{\`e}re, T.~Obata, Y.~Shin, R.~Brunner, K.~Yoshida,
+  T.~Taniyama, and S.~Tarucha.
+\newblock Triple quantum dot device designed for three spin qubits.
+\newblock {\em Applied Physics Letters}, 97(21):212104, 2010.
+
+\bibitem{whitfield2011simulation}
+J.~Whitfield, J.~Biamonte, and A.~Aspuru-Guzik.
+\newblock Simulation of electronic structure hamiltonians using quantum
+  computers.
+\newblock {\em Molecular Physics}, 109(5):735--750, 2011.
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+
+\end{thebibliography}
+
+\end{document}

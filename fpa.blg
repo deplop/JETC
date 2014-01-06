@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: fpa.aux
+The style file: ACM-Reference-Format-Journals.bst
+Database file #1: fpa.bib
+<<<<<<< HEAD
+Warning--string name "pub-ieee-std" is undefined
+--line 32 of file fpa.bib
+Warning--string name "pub-ieee-std:adr" is undefined
+--line 33 of file fpa.bib
+Warning--string name "pra" is undefined
+--line 507 of file fpa.bib
+Warning--string name "qic" is undefined
+--line 519 of file fpa.bib
+Warning--string name "qic" is undefined
+--line 560 of file fpa.bib
+=======
+Warning--string name "pra" is undefined
+--line 450 of file fpa.bib
+Warning--string name "qic" is undefined
+--line 462 of file fpa.bib
+Warning--string name "qic" is undefined
+--line 503 of file fpa.bib
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+Warning--no number and no volume in fast-synthesis
+Warning--no journal in Choi12:2d-ntc
+Warning--no number and no volume in clader2013quantum
+Warning--page numbers missing in both pages and numpages fields in clader2013quantum
+Warning--no journal in draper04:quant-carry-lookahead
+Warning--require articleno with numpages field in PhysRevA.78.052310
+Warning--require articleno with numpages field in PhysRevLett.100.160501
+Warning--empty publisher in barrel-shifter
+Warning--empty address in barrel-shifter
+Warning--require articleno with numpages field in harrow:lineqs
+Warning--empty publisher in efficient-barrel
+Warning--empty address in efficient-barrel
+<<<<<<< HEAD
+Warning--empty publisher in P754:2008:ISF
+Warning--empty address in P754:2008:ISF
+=======
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+Warning--no number and no volume in jozsa2003notes
+Warning--page numbers missing in both pages and numpages fields in jozsa2003notes
+Warning--no number and no volume in lloyd2013qmachlearn
+Warning--page numbers missing in both pages and numpages fields in lloyd2013qmachlearn
+Warning--no number and no volume in clifford
+Warning--empty publisher in nachtigal
+Warning--no number and no volume in quantum-fault-tolerant
+<<<<<<< HEAD
+Warning--require articleno with numpages field in PhysRevA.87.042302
+=======
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
+Warning--no journal in takahashi05:adder
+Warning--no number and no volume in terhal13:_qec
+Warning--page numbers missing in both pages and numpages fields in terhal13:_qec
+Warning--empty publisher in efficient-subtractor
+Warning--empty address in efficient-subtractor
+Warning--empty publisher in new-subtractor
+Warning--no journal in van-meter04:fast-modexp
+<<<<<<< HEAD
+(There were 34 warnings)
+=======
+Warning--empty year in floating-point
+(There were 30 warnings)
+>>>>>>> 5e8aff6e1b811dc3c376c971bb34000c30ffa9e3
